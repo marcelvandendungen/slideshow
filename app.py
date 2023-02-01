@@ -1,20 +1,14 @@
-# from screeninfo import get_monitors
-
 from mediasource import MediaSource
-from navigation import Navigation
+from navigation import KeyboardNavigator
 from slideshow import SlideShow
 
-# for m in get_monitors():
-#     print(str(m))
+mediasource = MediaSource()
+navigator = KeyboardNavigator(mediasource)
 
 
 def main():
-    navigation = Navigation()
-    mediasource = MediaSource()
-    slideshow = SlideShow(mediasource, navigation)
-
-    while slideshow:
-        slideshow.next()
+    slideshow = SlideShow(navigator)
+    slideshow.run()
 
 
 if __name__ == "__main__":
