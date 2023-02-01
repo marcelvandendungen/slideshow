@@ -9,10 +9,16 @@ class MediaSource:
         self.index = 0
 
     def next(self):
-        self.index += 1
+        if self.index < len(self.filenames) - 1:
+            self.index += 1
+        else:
+            self.index = 0
 
     def prev(self):
-        self.index -= 1
+        if self.index == 0:
+            self.index = len(self.filenames) - 1
+        else:
+            self.index -= 1
 
     def get(self):
         return self.filenames[self.index]
